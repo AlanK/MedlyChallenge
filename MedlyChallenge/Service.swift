@@ -9,4 +9,7 @@ import Foundation
 
 enum Service {
     
+    static func getCountries(_ completionHandler: @escaping (Result<[Country], Error>) -> Void) {
+        
+    }
 }
