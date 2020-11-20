@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum Service: ServiceProtocol {
+enum CountryService: Service {
     
     /// Get a list of countries asynchronously.
     /// - Parameter location: Text representing the location where the list of countries is located.
     /// - Parameter completionHandler: The function to call with the result of getting the list of countries, either the list or an error.
-    static func getCountries(from location: String = "https://restcountries.eu/rest/v2/all",
-                             _ completionHandler: @escaping (Result<[Country], Error>) -> Void) {
+    static func getAll(from location: String = "https://restcountries.eu/rest/v2/all",
+                       _ completionHandler: @escaping (Result<[Country], Error>) -> Void) {
         
         guard let url = URL(string: location) else {
             return completionHandler(.failure(RequestError.couldNotCreateURL(input: location)))
@@ -36,9 +36,9 @@ enum Service: ServiceProtocol {
 ///     }
 /// }
 /// ```
-protocol ServiceProtocol { }
+protocol Service { }
 
-extension ServiceProtocol {
+extension Service {
     
     /// An adapter for passing a typical network call completion handler directly to a data task initializer.
     /// - Parameter completionHandler: A completion handler in the form of `(Result<DecodedOutput, Error>) -> Void`.
