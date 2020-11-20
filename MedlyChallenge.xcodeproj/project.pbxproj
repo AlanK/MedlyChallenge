@@ -15,6 +15,7 @@
 		5AE7704225684B1900990257 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE7704025684B1900990257 /* LaunchScreen.storyboard */; };
 		5AE7704D25684B1A00990257 /* MedlyChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7704C25684B1A00990257 /* MedlyChallengeTests.swift */; };
 		5AE7705825684B1A00990257 /* MedlyChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7705725684B1A00990257 /* MedlyChallengeUITests.swift */; };
+		5AE7706925684B8800990257 /* Medly iOS Challenge.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5AE7706825684B8800990257 /* Medly iOS Challenge.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		5AE7705325684B1A00990257 /* MedlyChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MedlyChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AE7705725684B1A00990257 /* MedlyChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedlyChallengeUITests.swift; sourceTree = "<group>"; };
 		5AE7705925684B1A00990257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AE7706825684B8800990257 /* Medly iOS Challenge.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Medly iOS Challenge.pdf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				5AE7703E25684B1900990257 /* Assets.xcassets */,
 				5AE7704025684B1900990257 /* LaunchScreen.storyboard */,
 				5AE7704325684B1900990257 /* Info.plist */,
+				5AE7706825684B8800990257 /* Medly iOS Challenge.pdf */,
 			);
 			path = MedlyChallenge;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AE7706925684B8800990257 /* Medly iOS Challenge.pdf in Resources */,
 				5AE7704225684B1900990257 /* LaunchScreen.storyboard in Resources */,
 				5AE7703F25684B1900990257 /* Assets.xcassets in Resources */,
 				5AE7703D25684B1700990257 /* Main.storyboard in Resources */,
