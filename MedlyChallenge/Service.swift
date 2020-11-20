@@ -27,6 +27,7 @@ enum Service {
                 }
             )
         }
+        .resume()
     }
     
     enum RequestError: LocalizedError {
