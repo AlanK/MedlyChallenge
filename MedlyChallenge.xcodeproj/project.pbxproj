@@ -18,6 +18,7 @@
 		5AE7706925684B8800990257 /* Medly iOS Challenge.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5AE7706825684B8800990257 /* Medly iOS Challenge.pdf */; };
 		5AE7706E25684C2F00990257 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7706D25684C2F00990257 /* Country.swift */; };
 		5AE7707325684DF700990257 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7707225684DF700990257 /* Service.swift */; };
+		5AE7707825686B6600990257 /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7707725686B6600990257 /* CountryService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		5AE7706825684B8800990257 /* Medly iOS Challenge.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Medly iOS Challenge.pdf"; sourceTree = "<group>"; };
 		5AE7706D25684C2F00990257 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		5AE7707225684DF700990257 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		5AE7707725686B6600990257 /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				5AE7703925684B1700990257 /* ViewController.swift */,
 				5AE7706D25684C2F00990257 /* Country.swift */,
 				5AE7707225684DF700990257 /* Service.swift */,
+				5AE7707725686B6600990257 /* CountryService.swift */,
 				5AE7703B25684B1700990257 /* Main.storyboard */,
 				5AE7703E25684B1900990257 /* Assets.xcassets */,
 				5AE7704025684B1900990257 /* LaunchScreen.storyboard */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AE7707825686B6600990257 /* CountryService.swift in Sources */,
 				5AE7706E25684C2F00990257 /* Country.swift in Sources */,
 				5AE7703A25684B1700990257 /* ViewController.swift in Sources */,
 				5AE7707325684DF700990257 /* Service.swift in Sources */,
