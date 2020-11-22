@@ -14,10 +14,10 @@ class ImageLoader {
     
     // MARK: - Private Properties
     
-    private let cache = NSCache<NSString, UIImage>()
+    private let cache = NSCache<Key, UIImage>()
     
-    private var allWaiters = [NSString: [UUID: ImageUser]]()
-    private var loadIDs = [UUID: NSString]()
+    private var allWaiters = [Key: [UUID: ImageUser]]()
+    private var keys = [UUID: Key]()
     
     // MARK: - Methods
     
@@ -32,7 +32,7 @@ class ImageLoader {
     /// This is `nil` if the request waas satisfied immediately.
     /// See `cancelLoad(_:)` for more information.
     func loadImage(atURL url: URL, useImage: @escaping ImageUser) -> Load? {
-        let key = url.absoluteString as NSString
+        let key = url.absoluteString as Key
         if let image = cache.object(forKey: key) {
             useImage(image)
             return nil
@@ -56,7 +56,7 @@ class ImageLoader {
     /// - Parameter load: An opaque token representing an in-progress load.
     func cancelLoad(_ load: Load) {
         let id = load.id
-        guard let key = loadIDs.removeValue(forKey: id) else { return }
+        guard let key = keys.removeValue(forKey: id) else { return }
         allWaiters[key]?.removeValue(forKey: id)
     }
     
@@ -64,7 +64,7 @@ class ImageLoader {
     
     private func addWaiter(
         _ waiter: @escaping ImageUser,
-        withID id: UUID, forKey key: NSString
+        withID id: UUID, forKey key: Key
     ) -> Bool {
         
         let existingWaiters = allWaiters[key] ?? [:]
@@ -73,23 +73,23 @@ class ImageLoader {
         return existingWaiters.isEmpty
     }
     
-    private func requestImage(atURL url: URL, forKey key: NSString) {
-        ImageService.requestURL(url, decoder: ImageService.decodeImage) { [weak self] result in
+    private func requestImage(atURL url: URL, forKey key: Key) {
+        ImageService.getImage(fromURL: url) { [weak self] result in
             guard let self = self else { return }
             let image = try? result.get()
             self.didGetImage(image, forKey: key)
         }
     }
     
-    private func didGetImage(_ image: UIImage?, forKey key: NSString) {
+    private func didGetImage(_ image: UIImage?, forKey key: Key) {
         image.map { image in cache.setObject(image, forKey: key) }
         DispatchQueue.main.async { [weak self] in self?.fulfillWaiters(with: image, forKey: key) }
     }
     
-    private func fulfillWaiters(with image: UIImage?, forKey key: NSString) {
+    private func fulfillWaiters(with image: UIImage?, forKey key: Key) {
         guard let waiters = allWaiters.removeValue(forKey: key) else { return }
         for (loadID, useImage) in waiters {
-            loadIDs[loadID] = nil
+            keys[loadID] = nil
             image.map(useImage)
         }
     }
@@ -98,31 +98,13 @@ class ImageLoader {
     
     typealias ImageUser = (UIImage) -> Void
     
+    private typealias Key = NSString
+    
     /// A load is an opaque token representing an in-progress image loading action.
     ///
     /// To cancel a load, pass the load object to the `cancelLoad(_:)`
     /// method of the image loader that produced it.
     struct Load {
         fileprivate let id: UUID
-    }
-    
-    private enum ImageService: Service {
-        
-        static func decodeImage(data: Data?, urlResponse: URLResponse?, error: Error?) throws -> UIImage {
-            if let error = error { throw error }
-            guard let data = data else { throw ResponseError.dataWasNil }
-            guard let image = UIImage(data: data) else { throw LoadingError.dataDidNotContainImage(data) }
-            return image
-        }
-    }
-    
-    private enum LoadingError: LocalizedError {
-        case dataDidNotContainImage(Data)
-        
-        var errorDescription: String? {
-            switch self {
-            case let .dataDidNotContainImage(data): return "Did not find image in data: \(data)"
-            }
-        }
     }
 }
