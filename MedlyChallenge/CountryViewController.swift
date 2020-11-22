@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CountryViewController.swift
 //  MedlyChallenge
 //
 //  Created by Alan Kantz on 11/20/20.
@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+/// A view controller that displays a list of countries.
+class CountryViewController: UITableViewController {
     
     override var navigationItem: UINavigationItem { nav }
     
@@ -80,7 +81,7 @@ class ViewController: UITableViewController {
     }
 }
 
-extension ViewController {
+extension CountryViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         countries.count

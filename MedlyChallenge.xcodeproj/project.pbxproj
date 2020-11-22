@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		5AE7703625684B1700990257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7703525684B1700990257 /* AppDelegate.swift */; };
 		5AE7703825684B1700990257 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7703725684B1700990257 /* SceneDelegate.swift */; };
-		5AE7703A25684B1700990257 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7703925684B1700990257 /* ViewController.swift */; };
+		5AE7703A25684B1700990257 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7703925684B1700990257 /* CountryViewController.swift */; };
 		5AE7703F25684B1900990257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AE7703E25684B1900990257 /* Assets.xcassets */; };
 		5AE7704225684B1900990257 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE7704025684B1900990257 /* LaunchScreen.storyboard */; };
 		5AE7704D25684B1A00990257 /* MedlyChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7704C25684B1A00990257 /* MedlyChallengeTests.swift */; };
@@ -45,7 +45,7 @@
 		5AE7703225684B1700990257 /* MedlyChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedlyChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AE7703525684B1700990257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AE7703725684B1700990257 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5AE7703925684B1700990257 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5AE7703925684B1700990257 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		5AE7703E25684B1900990257 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AE7704125684B1900990257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5AE7704325684B1900990257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 			children = (
 				5AE7703525684B1700990257 /* AppDelegate.swift */,
 				5AE7703725684B1700990257 /* SceneDelegate.swift */,
-				5AE7703925684B1700990257 /* ViewController.swift */,
+				5AE7703925684B1700990257 /* CountryViewController.swift */,
 				5AE7709C256ABCC500990257 /* ImageLoader.swift */,
 				5AE7708C256AAEAA00990257 /* FlagTableViewCell.swift */,
 				5AE7706D25684C2F00990257 /* Country.swift */,
@@ -284,7 +284,7 @@
 				5AE7706E25684C2F00990257 /* Country.swift in Sources */,
 				5AE770A8256AF81B00990257 /* ImageService.swift in Sources */,
 				5AE7708D256AAEAA00990257 /* FlagTableViewCell.swift in Sources */,
-				5AE7703A25684B1700990257 /* ViewController.swift in Sources */,
+				5AE7703A25684B1700990257 /* CountryViewController.swift in Sources */,
 				5AE7707325684DF700990257 /* Service.swift in Sources */,
 				5AE7703625684B1700990257 /* AppDelegate.swift in Sources */,
 				5AE7709D256ABCC500990257 /* ImageLoader.swift in Sources */,
