@@ -59,7 +59,7 @@ class CountryViewController: UITableViewController {
     }
     
     private func configureCell(
-        _ cell: FlagTableViewCell,
+        _ cell: Cell,
         forRowAt indexPath: IndexPath,
         with viewModel: Country
     ) {
@@ -103,7 +103,7 @@ extension CountryViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         let viewModel = countries[indexPath.row]
-        if let cell = cell as? FlagTableViewCell {
+        if let cell = cell as? Cell {
             configureCell(cell, forRowAt: indexPath, with: viewModel)
         }
         return cell
