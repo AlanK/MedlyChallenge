@@ -9,10 +9,19 @@ import UIKit
 
 class ViewController: UITableViewController {
     
+    override var navigationItem: UINavigationItem { nav }
+    
     private let countryService = CountryService.self
     private let cellClass = FlagTableViewCell.self
     
     private lazy var cellIdentifier = cellClass.description()
+    
+    private lazy var nav: UINavigationItem = {
+        let nav = UINavigationItem()
+        nav.title = "Countries"
+        nav.largeTitleDisplayMode = .always
+        return nav
+    }()
     
     private var imageLoads = [UIImageView: ImageLoader.Load]()
     
