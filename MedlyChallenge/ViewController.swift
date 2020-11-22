@@ -37,6 +37,7 @@ class ViewController: UITableViewController {
     
     private func setUpTableView() {
         tableView.register(cellClass, forCellReuseIdentifier: cellIdentifier)
+        tableView.allowsSelection = false
     }
 
     private func requestCountryUpdates() {
