@@ -49,8 +49,21 @@ extension Service {
         _ url: URL,
         completionHandler: @escaping (Result<Output, Error>) -> Void
     ) {
+        requestURL(url, decoder: decode, completionHandler: completionHandler)
+    }
+    
+    /// Request a remote resource by URL with a custom decoding function.
+    /// - Parameters:
+    ///   - url: The URL of the resource.
+    ///   - decoder: The function to use to decode the response.
+    ///   - completionHandler: A function to consume the output of the decoder.
+    static func requestURL<Output>(
+        _ url: URL,
+        decoder: @escaping (Data?, URLResponse?, Error?) throws -> Output,
+        completionHandler: @escaping (Result<Output, Error>) -> Void
+    ) {
         URLSession.shared
-            .dataTask(with: url, completionHandler: finish(with: completionHandler))
+            .dataTask(with: url, completionHandler: feed(completionHandler, withOutputOf: decoder))
             .resume()
     }
     
