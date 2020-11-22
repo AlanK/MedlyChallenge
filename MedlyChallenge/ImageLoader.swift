@@ -7,19 +7,29 @@
 
 import UIKit
 
+/// Loads remote images asynchonously.
+///
+/// Only call an image loader from the main thread.
 class ImageLoader {
     
     private let cache = NSCache<NSString, UIImage>()
     
     private var allWaiters = [NSString: [(UIImage) -> Void]]()
     
-    func loadImage(atLocation location: String, useImage: @escaping (UIImage) -> Void) {
-        let key = location as NSString
+    /// Load an image asynchronously and pass it to a handler.
+    ///
+    /// If loading fails, the handler will never be called.
+    /// - Parameters:
+    ///   - url: The location of the image.
+    ///   - useImage: A function that will consume the requested image.
+    ///   This will always be called on the main thread.
+    func loadImage(atURL url: URL, useImage: @escaping (UIImage) -> Void) {
+        let key = url.absoluteString as NSString
         if let image = cache.object(forKey: key) {
             useImage(image)
         } else {
             addWaiter(useImage, forKey: key)
-            requestImage(forKey: key)
+            requestImage(atURL: url, forKey: key)
         }
     }
     
@@ -28,7 +38,7 @@ class ImageLoader {
         allWaiters[key] = existingWaiters + [waiter]
     }
     
-    private func requestImage(forKey key: NSString) {
+    private func requestImage(atURL url: URL, forKey: NSString) {
         
     }
     
