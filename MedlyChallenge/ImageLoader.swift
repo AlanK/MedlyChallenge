@@ -38,8 +38,9 @@ class ImageLoader {
             return nil
         } else {
             let id = UUID()
-            addWaiter(useImage, withID: id, forKey: key)
-            requestImage(atURL: url, forKey: key)
+            if addWaiter(useImage, withID: id, forKey: key) {
+                requestImage(atURL: url, forKey: key)
+            }
             return Load(id: id)
         }
     }
@@ -61,25 +62,35 @@ class ImageLoader {
     
     // MARK: Private Methods
     
-    private func addWaiter(_ waiter: @escaping ImageUser, withID id: UUID, forKey key: NSString) {
-        let existingWaiters = allWaiters[key] ?? [:]
-        allWaiters[key] = existingWaiters.merging([id: waiter]) { _, new in new }
-    }
-    
-    private func requestImage(atURL url: URL, forKey: NSString) {
+    private func addWaiter(
+        _ waiter: @escaping ImageUser,
+        withID id: UUID, forKey key: NSString
+    ) -> Bool {
         
+        let existingWaiters = allWaiters[key] ?? [:]
+        let newWaiters = existingWaiters.merging([id: waiter]) { _, new in new }
+        allWaiters[key] = newWaiters
+        return existingWaiters.isEmpty
     }
     
-    private func didGetImage(_ image: UIImage, forKey key: NSString) {
-        cache.setObject(image, forKey: key)
+    private func requestImage(atURL url: URL, forKey key: NSString) {
+        ImageService.requestURL(url, decoder: ImageService.decodeImage) { [weak self] result in
+            guard let self = self else { return }
+            let image = try? result.get()
+            self.didGetImage(image, forKey: key)
+        }
+    }
+    
+    private func didGetImage(_ image: UIImage?, forKey key: NSString) {
+        image.map { image in cache.setObject(image, forKey: key) }
         DispatchQueue.main.async { [weak self] in self?.fulfillWaiters(with: image, forKey: key) }
     }
     
-    private func fulfillWaiters(with image: UIImage, forKey key: NSString) {
+    private func fulfillWaiters(with image: UIImage?, forKey key: NSString) {
         guard let waiters = allWaiters.removeValue(forKey: key) else { return }
         for (loadID, useImage) in waiters {
             loadIDs[loadID] = nil
-            useImage(image)
+            image.map(useImage)
         }
     }
     
@@ -93,5 +104,25 @@ class ImageLoader {
     /// method of the image loader that produced it.
     struct Load {
         fileprivate let id: UUID
+    }
+    
+    private enum ImageService: Service {
+        
+        static func decodeImage(data: Data?, urlResponse: URLResponse?, error: Error?) throws -> UIImage {
+            if let error = error { throw error }
+            guard let data = data else { throw ResponseError.dataWasNil }
+            guard let image = UIImage(data: data) else { throw LoadingError.dataDidNotContainImage(data) }
+            return image
+        }
+    }
+    
+    private enum LoadingError: LocalizedError {
+        case dataDidNotContainImage(Data)
+        
+        var errorDescription: String? {
+            switch self {
+            case let .dataDidNotContainImage(data): return "Did not find image in data: \(data)"
+            }
+        }
     }
 }
