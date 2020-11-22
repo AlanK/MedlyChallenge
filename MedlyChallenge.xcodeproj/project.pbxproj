@@ -19,7 +19,7 @@
 		5AE7707325684DF700990257 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7707225684DF700990257 /* Service.swift */; };
 		5AE7707825686B6600990257 /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7707725686B6600990257 /* CountryService.swift */; };
 		5AE7707D256A93C000990257 /* TinyCountries.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AE7707C256A93C000990257 /* TinyCountries.json */; };
-		5AE7708D256AAEAA00990257 /* FlagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7708C256AAEAA00990257 /* FlagTableViewCell.swift */; };
+		5AE7708D256AAEAA00990257 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7708C256AAEAA00990257 /* CountryTableViewCell.swift */; };
 		5AE7709D256ABCC500990257 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7709C256ABCC500990257 /* ImageLoader.swift */; };
 		5AE770A8256AF81B00990257 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE770A7256AF81B00990257 /* ImageService.swift */; };
 /* End PBXBuildFile section */
@@ -60,7 +60,7 @@
 		5AE7707225684DF700990257 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		5AE7707725686B6600990257 /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
 		5AE7707C256A93C000990257 /* TinyCountries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TinyCountries.json; sourceTree = "<group>"; };
-		5AE7708C256AAEAA00990257 /* FlagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagTableViewCell.swift; sourceTree = "<group>"; };
+		5AE7708C256AAEAA00990257 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		5AE7709C256ABCC500990257 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		5AE770A7256AF81B00990257 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +117,7 @@
 				5AE7703725684B1700990257 /* SceneDelegate.swift */,
 				5AE7703925684B1700990257 /* CountryViewController.swift */,
 				5AE7709C256ABCC500990257 /* ImageLoader.swift */,
-				5AE7708C256AAEAA00990257 /* FlagTableViewCell.swift */,
+				5AE7708C256AAEAA00990257 /* CountryTableViewCell.swift */,
 				5AE7706D25684C2F00990257 /* Country.swift */,
 				5AE7707225684DF700990257 /* Service.swift */,
 				5AE770A7256AF81B00990257 /* ImageService.swift */,
@@ -283,7 +283,7 @@
 				5AE7707825686B6600990257 /* CountryService.swift in Sources */,
 				5AE7706E25684C2F00990257 /* Country.swift in Sources */,
 				5AE770A8256AF81B00990257 /* ImageService.swift in Sources */,
-				5AE7708D256AAEAA00990257 /* FlagTableViewCell.swift in Sources */,
+				5AE7708D256AAEAA00990257 /* CountryTableViewCell.swift in Sources */,
 				5AE7703A25684B1700990257 /* CountryViewController.swift in Sources */,
 				5AE7707325684DF700990257 /* Service.swift in Sources */,
 				5AE7703625684B1700990257 /* AppDelegate.swift in Sources */,

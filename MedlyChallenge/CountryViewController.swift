@@ -13,9 +13,7 @@ class CountryViewController: UITableViewController {
     override var navigationItem: UINavigationItem { nav }
     
     private let countryService = CountryService.self
-    private let cellClass = FlagTableViewCell.self
-    
-    private lazy var cellIdentifier = cellClass.description()
+    private let cellClass = Cell.self
     
     private lazy var nav: UINavigationItem = {
         let nav = UINavigationItem()
@@ -24,6 +22,7 @@ class CountryViewController: UITableViewController {
         return nav
     }()
     
+    private var cellIdentifier = Cell.self.description()
     private var imageLoads = [UIImageView: ImageLoader.Load]()
     
     private var countries = [Country]() {
@@ -79,6 +78,8 @@ class CountryViewController: UITableViewController {
         guard imageLoads.removeValue(forKey: imageView) != nil else { return imageView.image = image }
         tableView.reloadRows(at: [indexPath], with: .none)
     }
+    
+    private typealias Cell = CountryTableViewCell
 }
 
 extension CountryViewController {
