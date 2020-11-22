@@ -19,6 +19,15 @@ class ImageLoader {
     private var allWaiters = [Key: [UUID: ImageUser]]()
     private var keys = [UUID: Key]()
     
+    // MARK: - Initializers
+    
+    /// The image loader singleton.
+    ///
+    /// Please—only call me from the main thread!
+    static let shared: ImageLoader = ImageLoader()
+    
+    private init() { }
+    
     // MARK: - Methods
     
     /// Load an image asynchronously and pass it to a handler.
@@ -81,8 +90,9 @@ class ImageLoader {
         }
     }
     
+    /// This is the only method you're allowed to call off the main thread.
     private func didGetImage(_ image: UIImage?, forKey key: Key) {
-        image.map { image in cache.setObject(image, forKey: key) }
+        image.map { image in cache.setObject(image, forKey: key) } // The cache is thread-safe
         DispatchQueue.main.async { [weak self] in self?.fulfillWaiters(with: image, forKey: key) }
     }
     
