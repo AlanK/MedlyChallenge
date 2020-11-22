@@ -8,12 +8,24 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    private let countryService = CountryService.self
+    
+    private var countries = [Country]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        requestCountryUpdates()
     }
 
-
+    private func requestCountryUpdates() {
+        countryService.getAll { [weak self] result in
+            guard
+                let self = self,
+                let countries = try? result.get()
+            else { return }
+            DispatchQueue.main.async { self.countries = countries }
+        }
+    }
 }
 
