@@ -9,25 +9,19 @@ import XCTest
 @testable import MedlyChallenge
 
 class MedlyChallengeTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    lazy var bundle = Bundle(for: type(of: self))
+    
+    func test_TinyCountriesJSONDecodes() throws {
+        // Given
+        let service = CountryService.self
+        let jsonFileURL = try XCTUnwrap(bundle.url(forResource: "TinyCountries", withExtension: "json"))
+        let data = try Data(contentsOf: jsonFileURL)
+        
+        // When
+        let countries: [Country] = try service.decode(data: data, urlResponse: nil, error: nil)
+        
+        // Then
+        XCTAssertEqual(countries.count, 1)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
