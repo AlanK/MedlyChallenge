@@ -13,15 +13,46 @@ import Foundation
 /// ```swift
 /// enum SomeService: ServiceProtocol {
 ///     static func getThing(_ completionHandler: @escaping (Result<Bool, Error>) -> Void) {
-///         let url = // ...
-///         let task = URLSession.shared.dataTask(with: url, completionHandler: finish(with: completionHandler))
-///         task.resume()
+///         requestLocation("some.url/string", completionHandler: completionHandler)
 ///     }
 /// }
 /// ```
+/// Prefer `requestURL(_:completionHandler:)` over `requestLocation(_:completionHandler:)`
+/// if a URL is available.
 protocol Service { }
 
 extension Service {
+    
+    /// Request a remote resource by string.
+    ///
+    /// The resource must be decodable.
+    /// - Parameters:
+    ///   - location: The string representation of a URL.
+    ///   - completionHandler: A function to consume the resulting instance (or error).
+    static func requestLocation<Output: Decodable>(
+        _ location: String,
+        completionHandler: @escaping (Result<Output, Error>) -> Void
+    ) {
+        guard let url = URL(string: location) else {
+            return completionHandler(.failure(RequestError.couldNotCreateURL(input: location)))
+        }
+        requestURL(url, completionHandler: completionHandler)
+    }
+    
+    /// Request a remote resource by URL.
+    ///
+    /// The resource must be decodable.
+    /// - Parameters:
+    ///   - url: The URL of the resource.
+    ///   - completionHandler: A function to consume the resulting instance (or error).
+    static func requestURL<Output: Decodable>(
+        _ url: URL,
+        completionHandler: @escaping (Result<Output, Error>) -> Void
+    ) {
+        URLSession.shared
+            .dataTask(with: url, completionHandler: finish(with: completionHandler))
+            .resume()
+    }
     
     /// An adapter for passing a typical network call completion handler directly to a data task initializer.
     /// - Parameter completionHandler: A completion handler in the form of `(Result<DecodedOutput, Error>) -> Void`.

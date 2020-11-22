@@ -13,12 +13,11 @@ enum CountryService: Service {
     /// - Parameter location: Text representing the location of the country list.
     /// - Parameter completionHandler: The function to call with the result of getting the list of countries, either the list or an error.
     static func getAll(fromURL url: URL? = nil, _ completionHandler: @escaping (Result<[Country], Error>) -> Void) {
-        let urlText = "https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;capital"
-        guard let requestURL = url ?? URL(string: urlText) else {
-            return completionHandler(.failure(RequestError.couldNotCreateURL(input: urlText)))
+        if let url = url {
+            requestURL(url, completionHandler: completionHandler)
+        } else {
+            requestLocation("https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;capital",
+                            completionHandler: completionHandler)
         }
-        URLSession.shared
-            .dataTask(with: requestURL, completionHandler: finish(with: completionHandler))
-            .resume()
     }
 }
