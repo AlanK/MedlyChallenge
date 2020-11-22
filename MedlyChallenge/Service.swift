@@ -33,6 +33,7 @@ extension Service {
         _ location: String,
         completionHandler: @escaping (Result<Output, Error>) -> Void
     ) {
+        
         guard let url = URL(string: location) else {
             return completionHandler(.failure(RequestError.couldNotCreateURL(input: location)))
         }
@@ -49,6 +50,7 @@ extension Service {
         _ url: URL,
         completionHandler: @escaping (Result<Output, Error>) -> Void
     ) {
+        
         requestURL(url, decoder: decode, completionHandler: completionHandler)
     }
     
@@ -62,6 +64,7 @@ extension Service {
         decoder: @escaping (Data?, URLResponse?, Error?) throws -> Output,
         completionHandler: @escaping (Result<Output, Error>) -> Void
     ) {
+        
         URLSession.shared
             .dataTask(with: url, completionHandler: feed(completionHandler, withOutputOf: decoder))
             .resume()
