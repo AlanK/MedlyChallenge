@@ -14,6 +14,8 @@ class ViewController: UITableViewController {
     
     private lazy var cellIdentifier = cellClass.description()
     
+    private var imageLoads = [UIImageView: ImageLoader.Load]()
+    
     private var countries = [Country]() {
         didSet { tableView.reloadData() }
     }
@@ -35,6 +37,19 @@ class ViewController: UITableViewController {
                 let countries = try? result.get()
             else { return }
             DispatchQueue.main.async { self.countries = countries }
+        }
+    }
+    
+    private func configureCell(_ cell: FlagTableViewCell, withViewModel viewModel: Country) {
+        cell.textLabel?.text = viewModel.name
+        cell.detailTextLabel?.text = viewModel.capital
+        
+        guard let imageView = cell.imageView else { return }
+        imageLoads[imageView].map(ImageLoader.shared.cancelLoad)
+        imageView.image = nil
+        guard let url = URL(string: "https://www.countryflags.io/\(viewModel.flagCode)/flat/64.png") else { return }
+        imageLoads[imageView] = ImageLoader.shared.loadImage(atURL: url) { [weak imageView] image in
+            imageView?.image = image
         }
     }
 }
