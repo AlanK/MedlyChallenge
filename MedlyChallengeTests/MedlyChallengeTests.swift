@@ -41,6 +41,7 @@ class MedlyChallengeTests: XCTestCase {
             expectation.fulfill()
         }
         
+        // Then
         waitForExpectations(timeout: timeout)
         let outcome = try result.get()
         XCTAssertEqual(outcome.count, 1)
