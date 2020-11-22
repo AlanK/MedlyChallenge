@@ -19,6 +19,7 @@
 		5AE7706E25684C2F00990257 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7706D25684C2F00990257 /* Country.swift */; };
 		5AE7707325684DF700990257 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7707225684DF700990257 /* Service.swift */; };
 		5AE7707825686B6600990257 /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7707725686B6600990257 /* CountryService.swift */; };
+		5AE7707D256A93C000990257 /* TinyCountries.json in Resources */ = {isa = PBXBuildFile; fileRef = 5AE7707C256A93C000990257 /* TinyCountries.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		5AE7706D25684C2F00990257 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		5AE7707225684DF700990257 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		5AE7707725686B6600990257 /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
+		5AE7707C256A93C000990257 /* TinyCountries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TinyCountries.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				5AE7704C25684B1A00990257 /* MedlyChallengeTests.swift */,
+				5AE7707C256A93C000990257 /* TinyCountries.json */,
 				5AE7704E25684B1A00990257 /* Info.plist */,
 			);
 			path = MedlyChallengeTests;
@@ -254,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AE7707D256A93C000990257 /* TinyCountries.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
