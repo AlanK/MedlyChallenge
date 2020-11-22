@@ -40,17 +40,33 @@ class ViewController: UITableViewController {
         }
     }
     
-    private func configureCell(_ cell: FlagTableViewCell, withViewModel viewModel: Country) {
+    private func configureCell(
+        _ cell: FlagTableViewCell,
+        forRowAt indexPath: IndexPath,
+        with viewModel: Country
+    ) {
+        
         cell.textLabel?.text = viewModel.name
         cell.detailTextLabel?.text = viewModel.capital
+        cell.imageView?.contentMode = .scaleAspectFit
         
         guard let imageView = cell.imageView else { return }
-        imageLoads[imageView].map(ImageLoader.shared.cancelLoad)
         imageView.image = nil
+        
+        imageLoads
+            .removeValue(forKey: imageView)
+            .map(ImageLoader.shared.cancelLoad)
+        
         guard let url = URL(string: "https://www.countryflags.io/\(viewModel.flagCode)/flat/64.png") else { return }
-        imageLoads[imageView] = ImageLoader.shared.loadImage(atURL: url) { [weak imageView] image in
-            imageView?.image = image
+        imageLoads[imageView] = ImageLoader.shared.loadImage(atURL: url) { [weak self, weak imageView] image in
+            guard let imageView = imageView else { return }
+            self?.updateImageView(imageView, inRowAt: indexPath, with: image)
         }
+    }
+    
+    private func updateImageView(_ imageView: UIImageView, inRowAt indexPath: IndexPath, with image: UIImage) {
+        guard imageLoads.removeValue(forKey: imageView) != nil else { return imageView.image = image }
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }
 
@@ -64,7 +80,7 @@ extension ViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         let viewModel = countries[indexPath.row]
         if let cell = cell as? FlagTableViewCell {
-            cell.textLabel?.text = viewModel.name
+            configureCell(cell, forRowAt: indexPath, with: viewModel)
         }
         return cell
     }
