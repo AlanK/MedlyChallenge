@@ -36,7 +36,7 @@ class MedlyChallengeTests: XCTestCase {
         var result: Result<[Country], Error> = .failure(NSError(domain: "", code: .zero, userInfo: nil))
         
         // When
-        service.getAll(from: jsonFileURL.absoluteString) { outcome in
+        service.getAll(fromURL: jsonFileURL) { outcome in
             result = outcome
             expectation.fulfill()
         }
