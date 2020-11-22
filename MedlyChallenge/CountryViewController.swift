@@ -10,7 +10,11 @@ import UIKit
 /// A view controller that displays a list of countries.
 class CountryViewController: UITableViewController {
     
+    // MARK: - Properties
+    
     override var navigationItem: UINavigationItem { nav }
+    
+    // MARK: Private Properties
     
     private let countryService = CountryService.self
     private let cellClass = Cell.self
@@ -28,12 +32,16 @@ class CountryViewController: UITableViewController {
     private var countries = [Country]() {
         didSet { tableView.reloadData() }
     }
+    
+    // MARK: - Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
         requestCountryUpdates()
     }
+    
+    // MARK: Private Methods
     
     private func setUpTableView() {
         tableView.register(cellClass, forCellReuseIdentifier: cellIdentifier)
@@ -79,8 +87,12 @@ class CountryViewController: UITableViewController {
         tableView.reloadRows(at: [indexPath], with: .none)
     }
     
+    // MARK: - Private Nested Types
+    
     private typealias Cell = CountryTableViewCell
 }
+
+// MARK: - Table View Data Source
 
 extension CountryViewController {
     

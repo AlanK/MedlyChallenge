@@ -108,13 +108,16 @@ class ImageLoader {
     
     typealias ImageUser = (UIImage) -> Void
     
-    private typealias Key = NSString
-    
     /// A load is an opaque token representing an in-progress image loading action.
     ///
     /// To cancel a load, pass the load object to the `cancelLoad(_:)`
     /// method of the image loader that produced it.
     struct Load {
+        
         fileprivate let id: UUID
     }
+    
+    // MARK: - Private Nested Types
+    
+    private typealias Key = NSString
 }
