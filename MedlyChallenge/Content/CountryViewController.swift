@@ -116,8 +116,7 @@ extension CountryViewController: UITableViewDataSourcePrefetching {
             .lazy
             .enumerated()
             .filter { element in rows.contains(element.offset) }
-            .map(\.element)
-            .map(\.flagLocation)
+            .map(\.element.flagLocation)
             .compactMap(URL.init(string:))
             .forEach(ImageLoader.shared.preloadImage)
     }
