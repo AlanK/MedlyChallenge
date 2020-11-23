@@ -76,10 +76,14 @@ class CountryViewController: UITableViewController {
             .removeValue(forKey: imageView)
             .map(ImageLoader.shared.cancelLoad)
         
-        guard let url = URL(string: "https://www.countryflags.io/\(viewModel.flagCode)/flat/64.png") else { return }
+        guard let url = url(forCountryCode: viewModel.flagCode) else { return }
         imageLoads[imageView] = ImageLoader.shared.loadImage(atURL: url) { [weak imageView] image in
             imageView?.image = image
         }
+    }
+    
+    private func url(forCountryCode code: String) -> URL? {
+        URL(string: "https://www.countryflags.io/\(code)/flat/64.png")
     }
     
     // MARK: - Private Nested Types
@@ -102,5 +106,22 @@ extension CountryViewController {
             configureCell(cell, forRowAt: indexPath, with: viewModel)
         }
         return cell
+    }
+}
+
+// MARK: - Table View Data Source Prefetching
+
+extension CountryViewController: UITableViewDataSourcePrefetching {
+    
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        let rows = Set(indexPaths.map(\.row))
+        countries
+            .lazy
+            .enumerated()
+            .filter { element in rows.contains(element.offset) }
+            .map(\.element)
+            .map(\.flagCode)
+            .compactMap(url)
+            .forEach(ImageLoader.shared.preloadImage)
     }
 }

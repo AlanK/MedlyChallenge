@@ -54,6 +54,14 @@ class ImageLoader {
         }
     }
     
+    /// Request an image that may be needed soon.
+    ///
+    /// Call this method to "warm up" an image you don't need now, but expect to need soon.
+    /// - Parameter url: The location of the image.
+    func preloadImage(atURL url: URL) {
+        _ = loadImage(atURL: url) { _ in }
+    }
+    
     /// Cancel the loading of an image represented by a `Load` token.
     ///
     /// If a request to load an image cannot be satisfied immediately, the caller receives a `Load` token.
