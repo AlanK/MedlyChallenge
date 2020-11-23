@@ -16,6 +16,8 @@ class InitialViewController: UIViewController {
     
     // MARK: Private Properties
     
+    private let duration: TimeInterval = 0.2
+    
     private lazy var nav: UINavigationItem = {
         let nav = UINavigationItem()
         nav.title = "Countries"
@@ -27,11 +29,15 @@ class InitialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addOnlyChild(WaitingViewController())
-        loadCountries()
+        resetAndBeginLoading()
     }
     
     // MARK: Private Methods
+    
+    private func resetAndBeginLoading() {
+        addOnlyChild(WaitingViewController())
+        loadCountries()
+    }
     
     private func addOnlyChild(_ child: UIViewController) {
         for child in children {
@@ -49,20 +55,37 @@ class InitialViewController: UIViewController {
              child.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)]
         )
     }
-    
+
     private func loadCountries() {
         CountryService.getAll { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                guard let countries = try? result.get() else { return self.loadCountries() }
+                guard let countries = try? result.get() else { return self.displayError() }
                 self.displayCountries(countries)
             }
         }
     }
     
     private func displayCountries(_ countries: [Country]) {
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: duration) {
             self.addOnlyChild(CountryViewController(countries: countries))
         }
+    }
+    
+    private func displayError() {
+        let errorViewController = ErrorViewController()
+        errorViewController.delegate = self
+        UIView.animate(withDuration: duration) {
+            self.addOnlyChild(errorViewController)
+        }
+    }
+}
+
+// MARK: - Error View Controller Delegate
+
+extension InitialViewController: ErrorViewControllerDelegate {
+    
+    func errorViewControllerDidTryAgain(_ errorViewController: ErrorViewController) {
+        resetAndBeginLoading()
     }
 }
