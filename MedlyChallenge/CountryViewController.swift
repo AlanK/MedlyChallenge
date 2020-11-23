@@ -45,6 +45,7 @@ class CountryViewController: UITableViewController {
     
     private func setUpTableView() {
         tableView.register(cellClass, forCellReuseIdentifier: cellIdentifier)
+        tableView.separatorInset = UIEdgeInsets(top: .zero, left: 72, bottom: .zero, right: .zero)
         tableView.allowsSelection = false
     }
 
