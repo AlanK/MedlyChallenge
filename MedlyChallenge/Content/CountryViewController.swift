@@ -55,6 +55,7 @@ class CountryViewController: UITableViewController {
     private func setUpTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(cellClass, forCellReuseIdentifier: cellIdentifier)
+        tableView.prefetchDataSource = self
         tableView.separatorInset = separatorInset
         tableView.allowsSelection = false
     }
