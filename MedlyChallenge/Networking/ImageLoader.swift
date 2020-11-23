@@ -79,11 +79,7 @@ class ImageLoader {
     
     // MARK: Private Methods
     
-    private func addWaiter(
-        _ waiter: @escaping ImageUser,
-        withID id: UUID, forKey key: Key
-    ) -> Bool {
-        
+    private func addWaiter(_ waiter: @escaping ImageUser, withID id: UUID, forKey key: Key) -> Bool {
         let existingWaiters = allWaiters[key] ?? [:]
         let newWaiters = existingWaiters.merging([id: waiter]) { _, new in new }
         allWaiters[key] = newWaiters
