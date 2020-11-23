@@ -40,7 +40,7 @@ class ImageLoader {
     /// - Returns: An opaque token representing an in-progress load.
     /// This is `nil` if the request waas satisfied immediately.
     /// See `cancelLoad(_:)` for more information.
-    func loadImage(atURL url: URL, useImage: @escaping ImageUser) -> Load? {
+    func loadImage(at url: URL, useImage: @escaping ImageUser) -> Load? {
         let key = url.absoluteString as Key
         if let image = cache.object(forKey: key) {
             useImage(image)
@@ -48,7 +48,7 @@ class ImageLoader {
         } else {
             let id = UUID()
             if addWaiter(useImage, withID: id, forKey: key) {
-                requestImage(atURL: url, forKey: key)
+                requestImage(at: url, forKey: key)
             }
             return Load(id: id)
         }
@@ -58,8 +58,8 @@ class ImageLoader {
     ///
     /// Call this method to "warm up" an image you don't need now, but expect to need soon.
     /// - Parameter url: The location of the image.
-    func preloadImage(atURL url: URL) {
-        _ = loadImage(atURL: url) { _ in }
+    func preloadImage(at url: URL) {
+        _ = loadImage(at: url) { _ in }
     }
     
     /// Cancel the loading of an image represented by a `Load` token.
@@ -86,8 +86,8 @@ class ImageLoader {
         return existingWaiters.isEmpty
     }
     
-    private func requestImage(atURL url: URL, forKey key: Key) {
-        ImageService.getImage(fromURL: url) { [weak self] result in
+    private func requestImage(at url: URL, forKey key: Key) {
+        ImageService.getImage(from: url) { [weak self] result in
             guard let self = self else { return }
             let image = try? result.get()
             self.didGetImage(image, forKey: key)

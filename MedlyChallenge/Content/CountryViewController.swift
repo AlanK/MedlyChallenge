@@ -71,7 +71,7 @@ class CountryViewController: UITableViewController {
             .map(ImageLoader.shared.cancelLoad)
         
         guard let url = URL(string: viewModel.flagLocation) else { return }
-        imageLoads[imageView] = ImageLoader.shared.loadImage(atURL: url) { [weak imageView] image in
+        imageLoads[imageView] = ImageLoader.shared.loadImage(at: url) { [weak imageView] image in
             imageView?.image = image
         }
     }

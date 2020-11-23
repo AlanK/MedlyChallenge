@@ -51,7 +51,7 @@ extension Service {
         completionHandler: @escaping (Result<Output, Error>) -> Void
     ) {
         
-        requestURL(url, decoder: decode, completionHandler: completionHandler)
+        requestURL(url, decoder: decodeData, completionHandler: completionHandler)
     }
     
     /// Request a remote resource by URL with a custom decoding function.
@@ -77,7 +77,7 @@ extension Service {
         with completionHandler: @escaping (Result<Output, Error>) -> Void
     ) -> (Data?, URLResponse?, Error?) -> Void {
         
-        feed(completionHandler, withOutputOf: decode)
+        feed(completionHandler, withOutputOf: decodeData)
     }
     
     /// An adapter for connecting a typical network call completion handler to a decoding function.
@@ -105,7 +105,12 @@ extension Service {
     ///   - error: An optional error. If this is not `nil`, it will be thrown.
     /// - Throws: The provided error, or a `ResponseError`.
     /// - Returns: A decoded value.
-    static func decode<Output: Decodable>(data: Data?, urlResponse: URLResponse?, error: Error?) throws -> Output {
+    static func decodeData<Output: Decodable>(
+        _ data: Data?,
+        urlResponse: URLResponse?,
+        error: Error?
+    ) throws -> Output {
+        
         if let error = error { throw error }
         guard let data = data else { throw ResponseError.dataWasNil }
         return try JSONDecoder().decode(Output.self, from: data)

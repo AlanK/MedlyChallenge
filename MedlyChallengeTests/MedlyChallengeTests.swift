@@ -21,7 +21,7 @@ class MedlyChallengeTests: XCTestCase {
         let data = try Data(contentsOf: jsonFileURL)
         
         // When
-        let countries: [NetworkCountry] = try service.decode(data: data, urlResponse: nil, error: nil)
+        let countries: [NetworkCountry] = try service.decodeData(data, urlResponse: nil, error: nil)
         
         // Then
         XCTAssertEqual(countries.count, 1)
@@ -36,7 +36,7 @@ class MedlyChallengeTests: XCTestCase {
         var result: Result<[NetworkCountry], Error> = .failure(NSError(domain: "", code: .zero, userInfo: nil))
         
         // When
-        service.getAll(fromURL: jsonFileURL) { outcome in
+        service.getAll(from: jsonFileURL) { outcome in
             result = outcome
             expectation.fulfill()
         }
