@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A67661E256B53AE00E8FB9C /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A67661D256B53AE00E8FB9C /* InitialViewController.swift */; };
+		5A676623256B53DB00E8FB9C /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A676622256B53DB00E8FB9C /* WaitingViewController.swift */; };
 		5AE7703625684B1700990257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7703525684B1700990257 /* AppDelegate.swift */; };
 		5AE7703825684B1700990257 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7703725684B1700990257 /* SceneDelegate.swift */; };
 		5AE7703A25684B1700990257 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE7703925684B1700990257 /* CountryViewController.swift */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A67661D256B53AE00E8FB9C /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		5A676622256B53DB00E8FB9C /* WaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
 		5AE7703225684B1700990257 /* MedlyChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedlyChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AE7703525684B1700990257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AE7703725684B1700990257 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				5AE7703525684B1700990257 /* AppDelegate.swift */,
 				5AE7703725684B1700990257 /* SceneDelegate.swift */,
 				5AE7703925684B1700990257 /* CountryViewController.swift */,
+				5A67661D256B53AE00E8FB9C /* InitialViewController.swift */,
+				5A676622256B53DB00E8FB9C /* WaitingViewController.swift */,
 				5AE7709C256ABCC500990257 /* ImageLoader.swift */,
 				5AE7708C256AAEAA00990257 /* CountryTableViewCell.swift */,
 				5AE7706D25684C2F00990257 /* Country.swift */,
@@ -282,9 +288,11 @@
 			files = (
 				5AE7707825686B6600990257 /* CountryService.swift in Sources */,
 				5AE7706E25684C2F00990257 /* Country.swift in Sources */,
+				5A676623256B53DB00E8FB9C /* WaitingViewController.swift in Sources */,
 				5AE770A8256AF81B00990257 /* ImageService.swift in Sources */,
 				5AE7708D256AAEAA00990257 /* CountryTableViewCell.swift in Sources */,
 				5AE7703A25684B1700990257 /* CountryViewController.swift in Sources */,
+				5A67661E256B53AE00E8FB9C /* InitialViewController.swift in Sources */,
 				5AE7707325684DF700990257 /* Service.swift in Sources */,
 				5AE7703625684B1700990257 /* AppDelegate.swift in Sources */,
 				5AE7709D256ABCC500990257 /* ImageLoader.swift in Sources */,

@@ -10,27 +10,27 @@ import UIKit
 /// A view controller that displays a list of countries.
 class CountryViewController: UITableViewController {
     
-    // MARK: - Properties
-    
-    override var navigationItem: UINavigationItem { nav }
-    
     // MARK: Private Properties
     
     private let countryService = CountryService.self
     private let cellClass = Cell.self
     
-    private lazy var nav: UINavigationItem = {
-        let nav = UINavigationItem()
-        nav.title = "Countries"
-        nav.largeTitleDisplayMode = .always
-        return nav
-    }()
-    
     private var cellIdentifier = Cell.self.description()
     private var imageLoads = [UIImageView: ImageLoader.Load]()
     
-    private var countries = [Country]() {
-        didSet { tableView.reloadData() }
+    private let countries: [Country]
+    
+    // MARK: - Initializers
+    
+    /// Creates a new view controller displaying the provided list of countries
+    /// - Parameter countries: The countries to display.
+    init(countries: [Country]) {
+        self.countries = countries
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Methods
@@ -38,27 +38,17 @@ class CountryViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
-        requestCountryUpdates()
     }
     
     // MARK: Private Methods
     
     private func setUpTableView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(cellClass, forCellReuseIdentifier: cellIdentifier)
         tableView.separatorInset = UIEdgeInsets(top: .zero, left: 72, bottom: .zero, right: .zero)
         tableView.allowsSelection = false
     }
 
-    private func requestCountryUpdates() {
-        countryService.getAll { [weak self] result in
-            guard
-                let self = self,
-                let countries = try? result.get()
-            else { return }
-            DispatchQueue.main.async { self.countries = countries }
-        }
-    }
-    
     private func configureCell(
         _ cell: Cell,
         forRowAt indexPath: IndexPath,
