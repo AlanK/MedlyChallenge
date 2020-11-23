@@ -64,11 +64,11 @@ class CountryViewController: UITableViewController {
         with viewModel: Country
     ) {
         
-        cell.textLabel?.text = viewModel.name
-        cell.detailTextLabel?.text = viewModel.capital
-        cell.imageView?.contentMode = .scaleAspectFit
+        cell.countryLabel.text = viewModel.name
+        cell.capitalLabel.text = viewModel.capital
+        cell.capitalLabel.isHidden = viewModel.capital.isEmpty
         
-        guard let imageView = cell.imageView else { return }
+        let imageView = cell.flagImageView
         imageView.image = nil
         
         imageLoads
@@ -76,15 +76,9 @@ class CountryViewController: UITableViewController {
             .map(ImageLoader.shared.cancelLoad)
         
         guard let url = URL(string: "https://www.countryflags.io/\(viewModel.flagCode)/flat/64.png") else { return }
-        imageLoads[imageView] = ImageLoader.shared.loadImage(atURL: url) { [weak self, weak imageView] image in
-            guard let imageView = imageView else { return }
-            self?.updateImageView(imageView, inRowAt: indexPath, with: image)
+        imageLoads[imageView] = ImageLoader.shared.loadImage(atURL: url) { [weak imageView] image in
+            imageView?.image = image
         }
-    }
-    
-    private func updateImageView(_ imageView: UIImageView, inRowAt indexPath: IndexPath, with image: UIImage) {
-        guard imageLoads.removeValue(forKey: imageView) != nil else { return imageView.image = image }
-        tableView.reloadRows(at: [indexPath], with: .none)
     }
     
     // MARK: - Private Nested Types
