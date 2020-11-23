@@ -61,7 +61,7 @@ class InitialViewController: UIViewController {
             guard let self = self else { return }
             DispatchQueue.main.async {
                 guard let countries = try? result.get() else { return self.displayError() }
-                self.displayCountries(countries)
+                self.displayCountries(countries.map(Country.init))
             }
         }
     }

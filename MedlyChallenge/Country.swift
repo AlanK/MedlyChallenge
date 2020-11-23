@@ -2,21 +2,23 @@
 //  Country.swift
 //  MedlyChallenge
 //
-//  Created by Alan Kantz on 11/20/20.
+//  Created by Alan Kantz on 11/22/20.
 //
 
-/// A country with a name, flag code, and capital.
-struct Country: Decodable {
+/// A country fit for display.
+struct Country {
     /// The name of the country.
     let name: String
-    /// The `alpha2Code` for the country, used to identify the country flag.
-    let flagCode: String
-    /// The capital of the country.
-    let capital: String
+    /// The name of the country capital, if applicable.
+    let capital: String?
+    /// The location of the country flag resource.
+    let flagLocation: String
     
-    private enum CodingKeys: String, CodingKey {
-        case name
-        case flagCode = "alpha2Code"
-        case capital
+    /// Creates a new country instance from a network country instance.
+    /// - Parameter rawCountry: The network country instance.
+    init(_ rawCountry: NetworkCountry) {
+        name = rawCountry.name
+        capital = rawCountry.capital.isEmpty ? nil : rawCountry.capital
+        flagLocation = "https://www.countryflags.io/\(rawCountry.flagCode)/flat/64.png"
     }
 }
