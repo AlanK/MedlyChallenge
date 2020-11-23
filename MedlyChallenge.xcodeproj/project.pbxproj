@@ -98,6 +98,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A676646256B769600E8FB9C /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5AE7709C256ABCC500990257 /* ImageLoader.swift */,
+				5AE7706D25684C2F00990257 /* NetworkCountry.swift */,
+				5AE7707225684DF700990257 /* Service.swift */,
+				5AE770A7256AF81B00990257 /* ImageService.swift */,
+				5AE7707725686B6600990257 /* CountryService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		5A67664A256B76BC00E8FB9C /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				5AE7703925684B1700990257 /* CountryViewController.swift */,
+				5AE7708C256AAEAA00990257 /* CountryTableViewCell.swift */,
+				5A676641256B735800E8FB9C /* Country.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		5A67664E256B76D600E8FB9C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				5A676635256B69A000E8FB9C /* UIColor+Extension.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		5AE7702925684B1700990257 = {
 			isa = PBXGroup;
 			children = (
@@ -122,18 +152,12 @@
 			isa = PBXGroup;
 			children = (
 				5AE7703525684B1700990257 /* AppDelegate.swift */,
-				5AE7703925684B1700990257 /* CountryViewController.swift */,
-				5A67661D256B53AE00E8FB9C /* InitialViewController.swift */,
 				5A676627256B604400E8FB9C /* ErrorViewController.swift */,
-				5A676635256B69A000E8FB9C /* UIColor+Extension.swift */,
+				5A67661D256B53AE00E8FB9C /* InitialViewController.swift */,
 				5A676622256B53DB00E8FB9C /* WaitingViewController.swift */,
-				5AE7709C256ABCC500990257 /* ImageLoader.swift */,
-				5AE7708C256AAEAA00990257 /* CountryTableViewCell.swift */,
-				5AE7706D25684C2F00990257 /* NetworkCountry.swift */,
-				5A676641256B735800E8FB9C /* Country.swift */,
-				5AE7707225684DF700990257 /* Service.swift */,
-				5AE770A7256AF81B00990257 /* ImageService.swift */,
-				5AE7707725686B6600990257 /* CountryService.swift */,
+				5A67664A256B76BC00E8FB9C /* Content */,
+				5A676646256B769600E8FB9C /* Networking */,
+				5A67664E256B76D600E8FB9C /* Utilities */,
 				5AE7703E25684B1900990257 /* Assets.xcassets */,
 				5AE7704025684B1900990257 /* LaunchScreen.storyboard */,
 				5AE7704325684B1900990257 /* Info.plist */,
