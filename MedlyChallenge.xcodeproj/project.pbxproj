@@ -161,7 +161,6 @@
 				5AE7703E25684B1900990257 /* Assets.xcassets */,
 				5AE7704025684B1900990257 /* LaunchScreen.storyboard */,
 				5AE7704325684B1900990257 /* Info.plist */,
-				5AE7706825684B8800990257 /* Medly iOS Challenge.pdf */,
 			);
 			path = MedlyChallenge;
 			sourceTree = "<group>";
@@ -169,6 +168,7 @@
 		5AE7704B25684B1A00990257 /* MedlyChallengeTests */ = {
 			isa = PBXGroup;
 			children = (
+				5AE7706825684B8800990257 /* Medly iOS Challenge.pdf */,
 				5AE7704C25684B1A00990257 /* MedlyChallengeTests.swift */,
 				5AE7707C256A93C000990257 /* TinyCountries.json */,
 				5AE7704E25684B1A00990257 /* Info.plist */,
