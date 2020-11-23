@@ -13,10 +13,16 @@ struct NetworkCountry: Decodable {
     let flagCode: String
     /// The capital of the country.
     let capital: String
+    /// The population
+    let population: Int
+    /// The time zones
+    let timezones: [String]
     
     private enum CodingKeys: String, CodingKey {
         case name
         case flagCode = "alpha2Code"
         case capital
+        case population
+        case timezones
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A66FB20256C61DE00ECE37D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A66FB1F256C61DE00ECE37D /* ViewController.swift */; };
 		5A67661E256B53AE00E8FB9C /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A67661D256B53AE00E8FB9C /* InitialViewController.swift */; };
 		5A676623256B53DB00E8FB9C /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A676622256B53DB00E8FB9C /* WaitingViewController.swift */; };
 		5A676628256B604400E8FB9C /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A676627256B604400E8FB9C /* ErrorViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A66FB1F256C61DE00ECE37D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5A67661D256B53AE00E8FB9C /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		5A676622256B53DB00E8FB9C /* WaitingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
 		5A676627256B604400E8FB9C /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				5AE7703925684B1700990257 /* CountryViewController.swift */,
 				5AE7708C256AAEAA00990257 /* CountryTableViewCell.swift */,
 				5A676641256B735800E8FB9C /* Country.swift */,
+				5A66FB1F256C61DE00ECE37D /* ViewController.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				5A676628256B604400E8FB9C /* ErrorViewController.swift in Sources */,
 				5AE7706E25684C2F00990257 /* NetworkCountry.swift in Sources */,
 				5A676636256B69A000E8FB9C /* UIColor+Extension.swift in Sources */,
+				5A66FB20256C61DE00ECE37D /* ViewController.swift in Sources */,
 				5A676642256B735800E8FB9C /* Country.swift in Sources */,
 				5A676623256B53DB00E8FB9C /* WaitingViewController.swift in Sources */,
 				5AE770A8256AF81B00990257 /* ImageService.swift in Sources */,

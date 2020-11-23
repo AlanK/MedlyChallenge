@@ -54,7 +54,6 @@ class CountryViewController: UITableViewController {
         tableView.register(Cell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.prefetchDataSource = self
         tableView.separatorInset = separatorInset
-        tableView.allowsSelection = false
     }
 
     private func configureCell(_ cell: Cell, with viewModel: Country) {
@@ -86,7 +85,7 @@ class CountryViewController: UITableViewController {
     private typealias Cell = CountryTableViewCell
 }
 
-// MARK: - Table View Data Source
+// MARK: - Table View Data Source & Delegate
 
 extension CountryViewController {
     
@@ -101,6 +100,11 @@ extension CountryViewController {
             configureCell(cell, with: viewModel)
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewModel = countries[indexPath.row]
+        show(ViewController(viewModel), sender: nil)
     }
 }
 

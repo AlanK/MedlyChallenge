@@ -14,11 +14,18 @@ struct Country {
     /// The location of the country flag resource.
     let flagLocation: String
     
+    let populationText: String
+    
+    let timezoneText: String
+    
+    
     /// Creates a new country instance from a network country instance.
     /// - Parameter rawCountry: The network country instance.
     init(_ rawCountry: NetworkCountry) {
         name = rawCountry.name
         capital = rawCountry.capital.isEmpty ? nil : rawCountry.capital
         flagLocation = "https://www.countryflags.io/\(rawCountry.flagCode)/flat/64.png"
+        populationText = "\(rawCountry.population)"
+        timezoneText = rawCountry.timezones.joined(separator: ", ")
     }
 }
