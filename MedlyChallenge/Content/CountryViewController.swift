@@ -12,9 +12,6 @@ class CountryViewController: UITableViewController {
     
     // MARK: - Private Properties
     
-    private let countryService = CountryService.self
-    private let cellClass = Cell.self
-    
     private var cellIdentifier = Cell.self.description()
     private var imageLoads = [UIImageView: ImageLoader.Load]()
     
@@ -54,18 +51,13 @@ class CountryViewController: UITableViewController {
     
     private func setUpTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(cellClass, forCellReuseIdentifier: cellIdentifier)
+        tableView.register(Cell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.prefetchDataSource = self
         tableView.separatorInset = separatorInset
         tableView.allowsSelection = false
     }
 
-    private func configureCell(
-        _ cell: Cell,
-        forRowAt indexPath: IndexPath,
-        with viewModel: Country
-    ) {
-        
+    private func configureCell(_ cell: Cell, with viewModel: Country) {
         cell.countryLabel.text = viewModel.name
         cell.capitalLabel.text = viewModel.capital
         cell.capitalLabel.isHidden = viewModel.capital == nil
@@ -100,7 +92,7 @@ extension CountryViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
         let viewModel = countries[indexPath.row]
         if let cell = cell as? Cell {
-            configureCell(cell, forRowAt: indexPath, with: viewModel)
+            configureCell(cell, with: viewModel)
         }
         return cell
     }
