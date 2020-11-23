@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// The view controller responsible for coordinating the display of the country list.
 class InitialViewController: UIViewController {
 
     // MARK: - Properties
@@ -60,6 +61,8 @@ class InitialViewController: UIViewController {
     }
     
     private func displayCountries(_ countries: [Country]) {
-        addOnlyChild(CountryViewController(countries: countries))
+        UIView.animate(withDuration: 0.2) {
+            self.addOnlyChild(CountryViewController(countries: countries))
+        }
     }
 }
