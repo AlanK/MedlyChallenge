@@ -58,6 +58,7 @@ class CountryViewController: UITableViewController {
     }
 
     private func configureCell(_ cell: Cell, with viewModel: Country) {
+        cell.accessibilityLabel = accessibilityText(for: viewModel)
         cell.countryLabel.text = viewModel.name
         cell.capitalLabel.text = viewModel.capital
         cell.capitalLabel.isHidden = viewModel.capital == nil
@@ -73,6 +74,11 @@ class CountryViewController: UITableViewController {
         imageLoads[imageView] = ImageLoader.shared.loadImage(atURL: url) { [weak imageView] image in
             imageView?.image = image
         }
+    }
+    
+    private func accessibilityText(for viewModel: Country) -> String {
+        let extraInformation = viewModel.capital.map { capital in ", capital: \(capital)" } ?? ""
+        return viewModel.name + extraInformation
     }
     
     // MARK: - Private Nested Types
