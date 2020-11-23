@@ -111,8 +111,8 @@ class CountryTableViewCell: UITableViewCell {
         bottomConstraint.priority = UILayoutPriority(999)
         NSLayoutConstraint.activate(
             [contentStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: margin),
-             contentStack.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: margin),
-             contentStack.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -margin),
+             contentStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: margin),
+             contentStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -margin),
              bottomConstraint]
         )
     }

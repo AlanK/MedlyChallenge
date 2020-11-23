@@ -18,6 +18,12 @@ class CountryViewController: UITableViewController {
     private var cellIdentifier = Cell.self.description()
     private var imageLoads = [UIImageView: ImageLoader.Load]()
     
+    private var separatorInset: UIEdgeInsets {
+        var insets = UIEdgeInsets.zero
+        insets.left = view.safeAreaInsets.left + 72
+        return insets
+    }
+    
     private let countries: [Country]
     
     // MARK: - Initializers
@@ -40,12 +46,16 @@ class CountryViewController: UITableViewController {
         setUpTableView()
     }
     
+    override func viewSafeAreaInsetsDidChange() {
+        tableView.separatorInset = separatorInset
+    }
+    
     // MARK: Private Methods
     
     private func setUpTableView() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(cellClass, forCellReuseIdentifier: cellIdentifier)
-        tableView.separatorInset = UIEdgeInsets(top: .zero, left: 72, bottom: .zero, right: .zero)
+        tableView.separatorInset = separatorInset
         tableView.allowsSelection = false
     }
 
