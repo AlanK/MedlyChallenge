@@ -10,7 +10,7 @@ import UIKit
 /// A view controller that displays a list of countries.
 class CountryViewController: UITableViewController {
     
-    // MARK: Private Properties
+    // MARK: - Private Properties
     
     private let countryService = CountryService.self
     private let cellClass = Cell.self

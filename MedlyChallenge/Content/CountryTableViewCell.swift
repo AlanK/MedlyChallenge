@@ -10,7 +10,7 @@ import UIKit
 /// A table view cell for displaying a country.
 class CountryTableViewCell: UITableViewCell {
     
-    // MARK: - Public Properties
+    // MARK: - Properties
     
     /// A label suitable for displaying a country's name.
     let countryLabel: UILabel = {

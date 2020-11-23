@@ -125,7 +125,7 @@ class ImageLoader {
         fileprivate let id: UUID
     }
     
-    // MARK: - Private Nested Types
+    // MARK: Private Nested Types
     
     private typealias Key = NSString
 }
